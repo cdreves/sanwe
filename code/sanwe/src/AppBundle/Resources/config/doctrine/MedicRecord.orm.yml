@@ -1,0 +1,128 @@
+AppBundle\Entity\MedicRecord:
+    type: entity
+    table: medic_record
+    indexes:
+        IDX_65680232E62A35B3:
+            columns:
+                - id_appointment
+        IDX_656802326B3CA4B:
+            columns:
+                - id_user
+    uniqueConstraints:
+        medic_record_id_key:
+            columns:
+                - id
+        medic_record_id_pacient_key:
+            columns:
+                - id_pacient
+        medic_record_name_pacient_key:
+            columns:
+                - name_pacient
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+    fields:
+        inicio:
+            type: datetime
+            nullable: true
+        fin:
+            type: datetime
+            nullable: true
+        records:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        diagnosis:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        treatment:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        picture:
+            type: string
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        nextControl:
+            type: date
+            nullable: true
+            column: next_control
+        status:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+    oneToOne:
+        idPacient:
+            targetEntity: Pacient
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_pacient:
+                    referencedColumnName: id
+            orphanRemoval: false
+        namePacient:
+            targetEntity: Pacient
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                name_pacient:
+                    referencedColumnName: name
+            orphanRemoval: false
+    manyToOne:
+        idAppointment:
+            targetEntity: Appointment
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_appointment:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idUser:
+            targetEntity: SystemUser
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_user:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        idMaterial:
+            targetEntity: Material
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: idMedicRecord
+            joinTable:
+                name: consumption
+                joinColumns:
+                    -
+                        name: id_medic_record
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: id_material
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

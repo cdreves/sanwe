@@ -1,0 +1,37 @@
+AppBundle\Entity\Clinic:
+    type: entity
+    table: clinic
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 60
+            options:
+                fixed: false
+        address:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+        phone:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+        status:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+    lifecycleCallbacks: {  }

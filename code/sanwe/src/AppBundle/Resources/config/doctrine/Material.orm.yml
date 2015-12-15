@@ -1,0 +1,50 @@
+AppBundle\Entity\Material:
+    type: entity
+    table: material
+    indexes:
+        IDX_7CBE759574B6E745:
+            columns:
+                - id_cost_material
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 200
+            options:
+                fixed: false
+        description:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+    manyToOne:
+        idCostMaterial:
+            targetEntity: CostMaterial
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_cost_material:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        idMedicRecord:
+            targetEntity: MedicRecord
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: idMaterial
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

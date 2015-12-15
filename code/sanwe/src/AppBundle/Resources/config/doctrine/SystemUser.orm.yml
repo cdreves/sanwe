@@ -1,0 +1,101 @@
+AppBundle\Entity\SystemUser:
+    type: entity
+    table: system_user
+    indexes:
+        IDX_9C5F65BF21B44D59:
+            columns:
+                - id_clinic
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        type:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+        dni:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+        name:
+            type: string
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        lastName1:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: last_name1
+        lastName2:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: last_name2
+        birthdate:
+            type: date
+            nullable: true
+        sex:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        nationality:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        address:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+        email:
+            type: string
+            nullable: true
+            length: 60
+            options:
+                fixed: false
+        dateCreacion:
+            type: date
+            nullable: true
+            column: date_creacion
+        passwd:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        status:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+    manyToOne:
+        idClinic:
+            targetEntity: Clinic
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_clinic:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

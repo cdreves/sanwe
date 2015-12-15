@@ -1,0 +1,134 @@
+AppBundle\Entity\Client:
+    type: entity
+    table: client
+    indexes:
+        IDX_C744045516873509:
+            columns:
+                - id_pacient
+        IDX_C7440455C071D9C7:
+            columns:
+                - name_pacient
+    uniqueConstraints:
+        client_id_key:
+            columns:
+                - id
+        client_dni_key:
+            columns:
+                - dni
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+        dni:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+            id: true
+    fields:
+        nameClient:
+            type: string
+            nullable: true
+            length: 60
+            options:
+                fixed: false
+            column: name_client
+        lastName1:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: last_name1
+        lastName2:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: last_name2
+        birthdate:
+            type: date
+            nullable: true
+        sex:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        nationality:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        address:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+        city:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        municipality:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        phone:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+        email:
+            type: string
+            nullable: true
+            length: 60
+            options:
+                fixed: false
+        dateCreacion:
+            type: date
+            nullable: true
+            column: date_creacion
+        passwd:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+                comment: 'cuando se loguee e la web por primera vez se le pedira cambiar clave.'
+        status:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+    manyToOne:
+        idPacient:
+            targetEntity: Pacient
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_pacient:
+                    referencedColumnName: id
+            orphanRemoval: false
+        namePacient:
+            targetEntity: Pacient
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                name_pacient:
+                    referencedColumnName: name
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

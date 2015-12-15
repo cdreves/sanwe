@@ -1,0 +1,123 @@
+AppBundle\Entity\Appointment:
+    type: entity
+    table: appointment
+    indexes:
+        IDX_FE38F84416873509:
+            columns:
+                - id_pacient
+        IDX_FE38F844C071D9C7:
+            columns:
+                - name_pacient
+        IDX_FE38F844E173B1B8:
+            columns:
+                - id_client
+        IDX_FE38F844C3981172:
+            columns:
+                - dni_client
+        IDX_FE38F84421B44D59:
+            columns:
+                - id_clinic
+        IDX_FE38F8446B3CA4B:
+            columns:
+                - id_user
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        type:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        appointmentDate:
+            type: date
+            nullable: true
+            column: appointment_date
+        startTime:
+            type: time
+            nullable: true
+            column: start_time
+        endTime:
+            type: time
+            nullable: true
+            column: end_time
+        backgroundData:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: background_data
+        status:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+    manyToOne:
+        idPacient:
+            targetEntity: Pacient
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_pacient:
+                    referencedColumnName: id
+            orphanRemoval: false
+        namePacient:
+            targetEntity: Pacient
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                name_pacient:
+                    referencedColumnName: name
+            orphanRemoval: false
+        idClient:
+            targetEntity: Client
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_client:
+                    referencedColumnName: id
+            orphanRemoval: false
+        dniClient:
+            targetEntity: Client
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                dni_client:
+                    referencedColumnName: dni
+            orphanRemoval: false
+        idClinic:
+            targetEntity: Clinic
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_clinic:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idUser:
+            targetEntity: SystemUser
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_user:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

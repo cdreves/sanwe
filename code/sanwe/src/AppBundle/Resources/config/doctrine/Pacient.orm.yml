@@ -1,0 +1,83 @@
+AppBundle\Entity\Pacient:
+    type: entity
+    table: pacient
+    uniqueConstraints:
+        pacient_id_key:
+            columns:
+                - id
+        pacient_name_key:
+            columns:
+                - name
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+        name:
+            type: string
+            nullable: false
+            length: 150
+            options:
+                fixed: false
+            id: true
+    fields:
+        typeAnimal:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: type_animal
+        typeBreeding:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: type_breeding
+        birthdate:
+            type: date
+            nullable: true
+            options:
+                comment: 'date actual - date nacimiento, se obtiene el campo edad'
+        sex:
+            type: string
+            nullable: true
+            length: 15
+            options:
+                fixed: false
+        isCastrated:
+            type: boolean
+            nullable: true
+            column: is_castrated
+        registration:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        chipCode:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: chip_code
+        comments:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        picture:
+            type: string
+            nullable: true
+            length: 200
+            options:
+                fixed: false
+        status:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+    lifecycleCallbacks: {  }

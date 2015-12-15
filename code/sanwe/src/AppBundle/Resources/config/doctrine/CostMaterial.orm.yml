@@ -1,0 +1,32 @@
+AppBundle\Entity\CostMaterial:
+    type: entity
+    table: cost_material
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        cost:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        dateInicio:
+            type: date
+            nullable: true
+            column: date_inicio
+        dateFin:
+            type: date
+            nullable: true
+            column: date_fin
+        moneda:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+    lifecycleCallbacks: {  }
